@@ -1230,7 +1230,7 @@ Bot::Bot (edict_t *bot, int difficulty, int personality, int team, int skin) {
    m_deathCount = 0;
 
    // stuff from jk_botti
-   m_playServerTime = 60.0f * rg (30.0f, 240.0f);
+   m_playServerTime = rg (30.0f, 240.0f);
    m_joinServerTime = plat.seconds () - m_playServerTime * rg (0.2f, 0.8f);
 
    switch (personality) {
@@ -1300,7 +1300,7 @@ float Bot::getConnectionTime () {
    const auto current = plat.seconds ();
 
    if (current - m_joinServerTime > m_playServerTime || current - m_joinServerTime <= 0.0f) {
-      m_playServerTime = 60.0f * rg (30.0f, 240.0f);
+      m_playServerTime = rg (30.0f, 240.0f);
       m_joinServerTime = current - m_playServerTime * rg (0.2f, 0.8f);
    }
    return current - m_joinServerTime;
